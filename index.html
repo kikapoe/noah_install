@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+
+.block {
+  display: block;
+  width: 100%; 
+  border: none;
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.block:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px;
+  padding: 10px;
+  height:550px;
+}
+
+.grid-container > div {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+
+.item1 {
+  grid-column-end: 1;
+}
+
+.topic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+
+</style>
+</head>
+<body>
+
+<h2 class="topic">ฉันต้องการติดต่อหน่วยงาน..</h2>
+
+<div class="grid-container">
+  <button class="item1 block">Department 1</button>
+  <button class="item2 block">Department 2</button>
+  <button class="item3 block">Department 3</button>
+  <button class="item4 block">Department 4</button>
+  <button class="item5 block">Department 5</button>
+  <button class="item6 block">Department 6</button>
+  <button class="item7 block">Department 7</button>
+  <button class="item8 block">Department 8</button>
+</div>
+<div src="{{ url_for('rec') }}"></div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .grid-container>div {
+      background-color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+      padding: 20px 0;
+      font-size: 30px;
+    }
+
+    .ss {
+      display: block;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      height: 1000;
+      width: 1000;
+    }
+
+    .video-container {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .video-container video {
+      /* Make video to at least 100% wide and tall */
+      min-width: 100%;
+      min-height: 100%;
+
+      /* Setting width & height to auto prevents the browser from stretching or squishing the video */
+      width: auto;
+      height: auto;
+
+      /* Center the video */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    body {
+      margin: 0px
+    }
+  </style>
+</head>
+
+<body>
+  <div class="video-container">
+    <video id="video_eye" width="100vw" height="100vh" loop autoplay muted>
+      <!-- <source id="source_eye" src="static/eye_emotion_handsome_4.mp4" type="video/mp4"> -->
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <img class="ss" src="{{ url_for('rec') }}">
+</body>
+
+<script>
+  var is_idle = true;
+  var interval = 3900;
+
+
+  var vdosrc = "static/eye_emotion_smile.mp4";
+
+  var video = document.getElementById('video_eye');
+  var source = document.createElement('source');
+  var isPlaying = true;
+
+  source.setAttribute('src', 'static/eye_emotion_smile.mp4');
+  source.setAttribute('type', 'video/mp4');
+
+  video.appendChild(source);
+  video.play();
+
+  console.log({
+    src: source.getAttribute('src'),
+    type: source.getAttribute('type'),
+  });
+
+  setTimeout(function () {
+
+    video.pause();
+
+
+    vdosrc = "static/Eye_motion_standby_handsome.mp4"; 
+  
+
+    source.setAttribute('src', vdosrc);
+    source.setAttribute('type', 'video/mp4');
+
+    video.load();
+    video.play();
+
+    console.log({
+      src: source.getAttribute('src'),
+      type: source.getAttribute('type'),
+    });
+
+
+    is_idle = !is_idle
+  }, interval);
+
+  
+
+</script>
+
+<script>
+    document.addEventListener('visibilitychange', function (event) {
+      if (document.hidden) {
+          console.log('not visible');
+          window.close();
+          //setInterval(() => {window.close();}, 30000)
+      } else {
+          console.log('is visible');
+          //location.reload();
+      }
+  });
+</script>
+
+</html>
